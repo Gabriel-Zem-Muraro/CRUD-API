@@ -1,0 +1,29 @@
+
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: primeira-api-postgres
+    environment:
+    #CRIA O BANCO DE DADOS
+      POSTGRES_DB: primeira_api_db
+      POSTGRES_USER: gabriel
+      POSTGRES_PASSWORD: senha123
+    ports:
+      # Porta 5432 está ocupada, usando 5434
+      - "5434:5432"
+    volumes:
+      # Persistir dados mesmo se container for removido
+      - postgres_data:/var/lib/postgresql/data
+      # Scripts de inicialização (opcional)
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d
+    networks:
+      - primeira-api-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data: {}    # ✅ CORRETO - Mapeamento vazio
+
+networks:
+  primeira-api-network:
+    driver: bridge
