@@ -129,7 +129,7 @@ curl -X DELETE http://localhost:3000/deleteUser/1
 
 ## 📁 Estrutura do Projeto
 
-```
+```bash
 primeira-api/
 ├── docker/                      # Configurações Docker
 │   └── postgres/
@@ -150,6 +150,7 @@ primeira-api/
 ├── package.json                 # Dependências e scripts
 ├── tsconfig.json                # Configuração TypeScript
 └── README.md                    # Este arquivo
+```
 
 ## 🎯 Funcionalidades
 
@@ -205,4 +206,5 @@ Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) par
 ---
 
 ⭐ **Se este projeto te ajudou, deixe uma estrela!**
+
 
