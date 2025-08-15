@@ -93,12 +93,12 @@ yarn test:e2e
 
 | Método | Endpoint | Descrição | Autenticação |
 |--------|----------|-----------|--------------|
-| `GET` | `/users` | Listar todos os usuários | ❌ |
-| `GET` | `/users/:id` | Buscar usuário por ID | ❌ |
-| `POST` | `/addUser` | Criar novo usuário | ❌ |
-| `PATCH` | `/atualizaElemento/:id` | Atualizar campos específicos | ❌ |
-| `PUT` | `/AtualizaTodoUsuario/:id` | Atualizar usuário completo | ❌ |
-| `DELETE` | `/deleteUser/:id` | Deletar usuário | ❌ |
+| `GET` | `/users` | Listar todos os usuários | ✅ |
+| `GET` | `/users/:id` | Buscar usuário por ID | ✅ |
+| `POST` | `/addUser` | Criar novo usuário | ✅ |
+| `PATCH` | `/atualizaElemento/:id` | Atualizar campos específicos | 🔄 |
+| `PUT` | `/AtualizaTodoUsuario/:id` | Atualizar usuário completo | 🔄 |
+| `DELETE` | `/deleteUser/:id` | Deletar usuário | 🔄 |
 
 ### Exemplos de Uso
 
@@ -128,3 +128,74 @@ curl -X DELETE http://localhost:3000/deleteUser/1
 ```
 
 ## 📁 Estrutura do Projeto
+
+src/
+├── modulos/
+│ ├── auth/ # Módulo de autenticação
+│ │ ├── auth.controller.ts
+│ │ ├── auth.service.ts
+│ │ └── auth.guard.ts
+│ └── users/ # Módulo de usuários
+│ ├── domain/ # Camada de domínio
+│ │ ├── entities/ # Entidades do negócio
+│ │ └── services/ # Serviços de domínio
+│ ├── dto/ # Data Transfer Objects
+│ ├── user.controller.ts # Controlador HTTP
+│ └── users.module.ts # Módulo NestJS
+├── app.module.ts # Módulo raiz
+└── main.ts # Ponto de entrada
+
+## 🎯 Funcionalidades
+
+- ✅ **CRUD completo** de usuários
+- ✅ **Validação de dados** com class-validator
+- ✅ **Autenticação JWT** 
+- ✅ **Tratamento de erros** personalizado
+- ✅ **Logs estruturados**
+- ✅ **Documentação** da API
+- ✅ **Testes automatizados**
+- ✅ **Docker** para desenvolvimento
+- ✅ **TypeScript** para type safety
+
+- ## 🛡️ Segurança
+
+- **Validação** rigorosa de entrada
+- **Sanitização** de dados
+- **Rate limiting** (em desenvolvimento)
+- **CORS** configurado
+- **Headers** de segurança
+
+## 📊 Status do Projeto
+
+- ✅ **API Base** - Completa
+- ✅ **CRUD Usuários** - Completa
+- ✅ **Banco PostgreSQL** - Configurado
+- ✅ **Docker** - Configurado
+- ✅ **Autenticação JWT** - Em desenvolvimento
+
+- ## 🤝 Contribuição
+
+1. **Fork** o projeto
+2. **Crie** uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. **Commit** suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. **Push** para a branch (`git push origin feature/AmazingFeature`)
+5. **Abra** um Pull Request
+
+## 📝 Licença
+
+Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 👨‍💻 Autor
+
+**Gabriel** - [Gabriel-Zem-Muraro](https://github.com/Gabriel-Zem-Muraro)
+
+## 🙏 Agradecimentos
+
+- **NestJS** pela excelente documentação
+- **TypeORM** pela facilidade de uso
+- **PostgreSQL** pela robustez
+- **Docker** pela praticidade
+
+---
+
+⭐ **Se este projeto te ajudou, deixe uma estrela!**
