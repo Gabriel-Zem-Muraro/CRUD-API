@@ -129,21 +129,27 @@ curl -X DELETE http://localhost:3000/deleteUser/1
 
 ## 📁 Estrutura do Projeto
 
-src/
-├── modulos/
-│ ├── auth/ # Módulo de autenticação
-│ │ ├── auth.controller.ts
-│ │ ├── auth.service.ts
-│ │ └── auth.guard.ts
-│ └── users/ # Módulo de usuários
-│ ├── domain/ # Camada de domínio
-│ │ ├── entities/ # Entidades do negócio
-│ │ └── services/ # Serviços de domínio
-│ ├── dto/ # Data Transfer Objects
-│ ├── user.controller.ts # Controlador HTTP
-│ └── users.module.ts # Módulo NestJS
-├── app.module.ts # Módulo raiz
-└── main.ts # Ponto de entrada
+```
+primeira-api/
+├── docker/                      # Configurações Docker
+│   └── postgres/
+│       └── init/
+│           └── 01-init.sql      # Script de inicialização do DB
+├── src/                         # Código fonte
+│   ├── modulos/                 # Módulos da aplicação
+│   │   └── users/               # Gerenciamento de usuários
+│   │       ├── domain/          # Camada de domínio
+│   │       │   ├── entities/    # Entidades
+│   │       │   └── services/    # Serviços de domínio
+│   │       ├── dto/             # Data Transfer Objects
+│   │       ├── user.controller.ts
+│   │       └── users.module.ts
+│   ├── app.module.ts            # Módulo principal
+│   └── main.ts                  # Ponto de entrada
+├── docker-compose.yml           # Configuração Docker Compose
+├── package.json                 # Dependências e scripts
+├── tsconfig.json                # Configuração TypeScript
+└── README.md                    # Este arquivo
 
 ## 🎯 Funcionalidades
 
@@ -199,3 +205,4 @@ Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) par
 ---
 
 ⭐ **Se este projeto te ajudou, deixe uma estrela!**
+
