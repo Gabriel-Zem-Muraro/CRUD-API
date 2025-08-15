@@ -164,7 +164,7 @@ primeira-api/
 - ✅ **Docker** para desenvolvimento
 - ✅ **TypeScript** para type safety
 
-- ## 🛡️ Segurança
+## 🛡️ Segurança
 
 - **Validação** rigorosa de entrada
 - **Sanitização** de dados
@@ -180,7 +180,7 @@ primeira-api/
 - ✅ **Docker** - Configurado
 - ✅ **Autenticação JWT** - Em desenvolvimento
 
-- ## 🤝 Contribuição
+ ## 🤝 Contribuição
 
 1. **Fork** o projeto
 2. **Crie** uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
@@ -206,5 +206,6 @@ Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) par
 ---
 
 ⭐ **Se este projeto te ajudou, deixe uma estrela!**
+
 
 
