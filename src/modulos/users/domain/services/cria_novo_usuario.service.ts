@@ -12,17 +12,10 @@ export class CriaNovoUsuario {
   async criaNovoUsuario(novoUser): Promise<User | string> {
     const emailAVerificar = await this.userRepository.findOne({ where: { email: novoUser.email } });
     
-    if (!novoUser?.name) {
-      return `Nome precisa ser inserido`
-    } else if (!novoUser?.email) {
-      return `Email precisa ser inserido`
-    } else if (emailAVerificar?.email === novoUser.email) {
+    if (emailAVerificar?.email === novoUser.email) {
       return `Este email ${emailAVerificar?.email} já existe no banco`
-    } else if (!novoUser?.password) {
-      return `Senha precisa ser inserido`
-    } else if (!novoUser?.idade) {
-      return `Idade precisa ser inserido`
-    }   
+    } 
+    
     const NewUser = new User();
     NewUser.name = novoUser.name;
     NewUser.email = novoUser.email;

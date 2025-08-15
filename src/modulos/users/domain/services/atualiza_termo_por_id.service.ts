@@ -2,7 +2,9 @@ import { UnauthorizedException } from '@nestjs/common';
 import { User } from '../entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { promises } from 'dns';
-import { Repository } from 'typeorm';
+import { NumericType, Repository } from 'typeorm';
+
+import { UpdateUserDto } from '../../dto/user_update_validator.dto';
 
 export class AtualizaUsuario {
   constructor(
@@ -10,36 +12,39 @@ export class AtualizaUsuario {
     private userRepository: Repository<User>
   ) {}
 
-  async atualizaTermo (usuario: User): Promise<User | string> {
+  async atualizaTermo (usuario: UpdateUserDto, id: number): Promise<User | string> {
 
-    const usuarioAtualizado = await this.userRepository.findOne({ where: {id: usuario.id} });
+    const usuarioAtualizado = await this.userRepository.findOne({ where: {id: id} });
 
     if (!usuarioAtualizado) {
-      return `Usuario com id ${usuario.id} não encontrado`
-    }
-    usuarioAtualizado.name = usuario.name;
-    usuarioAtualizado.email = usuario.email;
-    usuarioAtualizado.password = usuario.password;
-    usuarioAtualizado.idade = usuario.idade
+      return `Usuario com id ${id} não encontrado`
+    } 
+    if (usuario.name) { usuarioAtualizado.name = usuario.name }
+    if (usuario.email) { usuarioAtualizado.email = usuario.email }
+    if (usuario.password) { usuarioAtualizado.password = usuario.password }
+    if (usuario.idade) { usuarioAtualizado.idade = usuario.idade }
 
-    return await this.userRepository.update(usuario.id, usuarioAtualizado), `Usuario com id ${usuario.id} foi atualizado`
+    await this.userRepository.update(id, usuarioAtualizado)
+    return `Usuario com id ${id} foi atualizado`
   }
 
-  async atualizaUsuario (usuario): Promise<User | string> {
+  async atualizaUsuario (usuario: UpdateUserDto, id: number): Promise<User | string> {
 
-    const usuarioAtualizaInteiro = await this.userRepository.findOne({ where: {id: usuario.id} });
+    const usuarioAtualizaInteiro = await this.userRepository.findOne({ where: {id: id} });
     console.log(usuario);
+    
     if (!usuarioAtualizaInteiro) {
-      return`Usuario com id ${usuario.id} não encontrado`
+      return`Usuario com id ${id} não encontrado`
     }
 
-    usuarioAtualizaInteiro.name = usuario.name;
-    usuarioAtualizaInteiro.email = usuario.email;
-    usuarioAtualizaInteiro.idade = usuario.idade;
-    usuarioAtualizaInteiro.is_active = usuario.is_active;
-    usuarioAtualizaInteiro.password = usuario.password;
+    if (usuario.name) { usuarioAtualizaInteiro.name = usuario.name }
+    if (usuario.email) { usuarioAtualizaInteiro.email = usuario.email }
+    if (usuario.password) { usuarioAtualizaInteiro.password = usuario.password }
+    if (usuario.idade) { usuarioAtualizaInteiro.idade = usuario.idade }
+    if (usuario.is_active === undefined) { usuarioAtualizaInteiro.is_active = usuario.is_active }
 
-    return await this.userRepository.update(usuario.id, usuarioAtualizaInteiro) , `Usuario com id ${usuario.id} foi atualizado`
+    await this.userRepository.update(id, usuarioAtualizaInteiro)
+    return `Usuario com id ${id} foi atualizado`
   }
 
 }

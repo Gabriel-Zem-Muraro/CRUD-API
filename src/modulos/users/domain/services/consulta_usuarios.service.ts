@@ -19,9 +19,7 @@ export class ConsultaUsuario{
   }
 
   async consultarTodos(isAtivo: boolean): Promise<Array<User> | string> {
-
     const todosUsers = await this.userRepository.find({ where: { is_active: isAtivo }});
-
     if(!todosUsers.length) {
       return `Não ha nenhum usuario registado!`
     }
