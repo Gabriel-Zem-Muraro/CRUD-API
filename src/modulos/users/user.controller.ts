@@ -58,3 +58,5 @@ export class UserController {
     return await this.usuarioParaAtualizar.atualizaUsuario(usuario, idUsuario);
   }
 }
+
+console.log('Teste para ver se está tudo certo ao trocar o username');
