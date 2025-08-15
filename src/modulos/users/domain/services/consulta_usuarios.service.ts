@@ -8,7 +8,7 @@ export class ConsultaUsuario{
     private userRepository: Repository<User>
   ) {}
 
-  async consultar(id: number): Promise<User | string> {
+  async consultarPorID(id: number): Promise<User | string> {
   
     const usuario = await this.userRepository.findOne({ where: { id: id } });
 
@@ -24,5 +24,10 @@ export class ConsultaUsuario{
       return `Não ha nenhum usuario registado!`
     }
     return todosUsers
+  }
+
+  async consultarEmail(userEmail: string): Promise<User | null> { 
+    const usuario = await this.userRepository.findOne({ where: { email: userEmail } });
+    return usuario;
   }
 }

@@ -1,7 +1,5 @@
-import { UnauthorizedException } from '@nestjs/common';
 import { User } from '../entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { promises } from 'dns';
 import { NumericType, Repository } from 'typeorm';
 
 import { UpdateUserDto } from '../../dto/user_update_validator.dto';

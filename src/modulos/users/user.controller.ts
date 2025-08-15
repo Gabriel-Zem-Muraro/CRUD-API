@@ -3,9 +3,7 @@ import { ConsultaUsuario } from './domain/services/consulta_usuarios.service';
 import { CriaNovoUsuario } from './domain/services/cria_novo_usuario.service'
 import { RemoveUsuario } from './domain/services/remove_usuario.service';
 import { AtualizaUsuario } from './domain/services/atualiza_termo_por_id.service'
-import { User } from './domain/entities/user.entity';
 import { CreateUserDto } from './dto/user_validations';
-import { identity, NotFoundError } from 'rxjs';
 import { UpdateUserDto } from './dto/user_update_validator.dto';
 
 @Controller()
@@ -22,7 +20,7 @@ export class UserController {
     errorHttpStatusCode: 400,
     exceptionFactory: () => new BadRequestException('O ID deve ser um número')
   })) id: number) {
-    return await this.consultaUsuario.consultar(Number(id));
+    return await this.consultaUsuario.consultarPorID(Number(id));
   }
 
   @Get('user') 
@@ -58,5 +56,3 @@ export class UserController {
     return await this.usuarioParaAtualizar.atualizaUsuario(usuario, idUsuario);
   }
 }
-
-console.log('Teste para ver se está tudo certo ao trocar o username');
