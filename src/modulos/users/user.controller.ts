@@ -1,4 +1,4 @@
-import {BadRequestException,Body,Controller,Delete,Get,NotFoundException,Param,ParseBoolPipe,ParseIntPipe,Patch,Post,Put,Query,} from '@nestjs/common';
+import {BadRequestException,Body,Controller,Delete,Get,NotFoundException,Param,ParseBoolPipe,ParseIntPipe,Patch,Post,Put,Query} from '@nestjs/common';
 import { ConsultaUsuario } from './domain/services/consulta_usuarios.service';
 import { CriaNovoUsuario } from './domain/services/cria_novo_usuario.service';
 import { RemoveUsuario } from './domain/services/remove_usuario.service';
