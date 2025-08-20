@@ -1,4 +1,15 @@
-import { IsString, IsEmail, IsNumber, MinLength, MaxLength, Min, Max, isNumber, IsNumberString, IsOptional } from 'class-validator';
+import {
+  IsString,
+  IsEmail,
+  IsNumber,
+  MinLength,
+  MaxLength,
+  Min,
+  Max,
+  isNumber,
+  IsNumberString,
+  IsOptional,
+} from 'class-validator';
 
 export class UpdateUserDto {
   @IsOptional()
@@ -23,5 +34,5 @@ export class UpdateUserDto {
   password?: string;
 
   @IsOptional()
-  is_active: boolean
+  is_active: boolean;
 }

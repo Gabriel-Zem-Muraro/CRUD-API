@@ -8,7 +8,6 @@ import { AuthModule } from './modulos/auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './modulos/auth/auth.guard';
 
-
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -23,12 +22,15 @@ import { AuthGuard } from './modulos/auth/auth.guard';
       logging: true,
     }),
     UsersModule,
-    AuthModule, 
+    AuthModule,
   ],
   controllers: [AppController],
-  providers: [AppService, {
-    provide: APP_GUARD,
-    useClass: AuthGuard,
-  },],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+  ],
 })
 export class AppModule {}

@@ -2,32 +2,35 @@ import { User } from '../entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-export class ConsultaUsuario{
+export class ConsultaUsuario {
   constructor(
     @InjectRepository(User)
-    private userRepository: Repository<User>
+    private userRepository: Repository<User>,
   ) {}
 
   async consultarPorID(id: number): Promise<User | string> {
-  
     const usuario = await this.userRepository.findOne({ where: { id: id } });
 
     if (!usuario) {
-      return `Usuário com ID ${id} não encontrado!`
-    } 
-      return usuario
+      return `Usuário com ID ${id} não encontrado!`;
+    }
+    return usuario;
   }
 
   async consultarTodos(isAtivo: boolean): Promise<Array<User> | string> {
-    const todosUsers = await this.userRepository.find({ where: { is_active: isAtivo }});
-    if(!todosUsers.length) {
-      return `Não ha nenhum usuario registado!`
+    const todosUsers = await this.userRepository.find({
+      where: { is_active: isAtivo },
+    });
+    if (!todosUsers.length) {
+      return `Não ha nenhum usuario registado!`;
     }
-    return todosUsers
+    return todosUsers;
   }
 
-  async consultarEmail(userEmail: string): Promise<User | null> { 
-    const usuario = await this.userRepository.findOne({ where: { email: userEmail } });
+  async consultarEmail(userEmail: string): Promise<User | null> {
+    const usuario = await this.userRepository.findOne({
+      where: { email: userEmail },
+    });
     return usuario;
   }
 }
