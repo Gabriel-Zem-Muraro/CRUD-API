@@ -82,11 +82,4 @@
     "mjs",
     "typeof",
     "instanceof"
-  ],
-  "cSpell.language": "pt-BR,en",
-  "cSpell.enableFiletypes": [
-    "typescript",
-    "javascript",
-    "json"
-  ]
-}
+  ]}
