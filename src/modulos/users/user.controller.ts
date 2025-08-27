@@ -54,14 +54,14 @@ export class UserController {
     return await this.novoUsuario.criaNovoUsuario(usuario);
   }
 
-  @Delete('user')
+  @Delete('user/:id')
   async removeUser(
-    @Body(
+    @Param(
       'id',
       new ParseIntPipe({
         errorHttpStatusCode: 400,
         exceptionFactory: () =>
-          new BadRequestException('O id deve ser um numero'),
+          new BadRequestException('O id deve ser um número'),
       }),
     )
     id: number,
